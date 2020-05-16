@@ -11,11 +11,9 @@ class MapScreen1 extends StatefulWidget {
 class MapScreen1State extends State<MapScreen1> {
   Completer<GoogleMapController> _controller = Completer();
 
-  //Location location = Location();
   @override
   void initState() {
     super.initState();
-    //location.getCurrentLocation();
   }
 
   double zoomVal = 5.0;

@@ -43,53 +43,57 @@ class _WelcomeScreenState extends State<WelcomeScreen>
       backgroundColor: Colors.black,
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        child: ListView(
           children: <Widget>[
             Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Hero(
-                  tag: 'logo',
-                  child: Container(
-                    child: Image.asset(
-                      'images/logo.png',
-                      alignment: Alignment.center,
+                Column(
+                  children: <Widget>[
+                    Hero(
+                      tag: 'logo',
+                      child: Container(
+                        child: Image.asset(
+                          'images/logo.png',
+                          alignment: Alignment.center,
+                        ),
+                        height: 200.0,
+                      ),
                     ),
-                    height: 200.0,
-                  ),
+                    SizedBox(
+                      height: 30.0,
+                    ),
+                    TypewriterAnimatedTextKit(
+                      text: ['Virtual\nTourist\nGuide'],
+                      textAlign: TextAlign.center,
+                      textStyle: TextStyle(
+                        fontSize: 45.0,
+                        fontFamily: 'AmaticSC',
+                        color: Colors.lightBlueAccent,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(
-                  height: 30.0,
+                  height: 48.0,
                 ),
-                TypewriterAnimatedTextKit(
-                  text: ['Virtual\nTourist\nGuide'],
-                  textAlign: TextAlign.center,
-                  textStyle: TextStyle(
-                    fontSize: 45.0,
-                    fontFamily: 'AmaticSC',
-                    color: Colors.lightBlueAccent,
-                    fontWeight: FontWeight.w900,
-                  ),
+                RoundedButton(
+                  title: 'Log In',
+                  colour: Colors.lightBlueAccent,
+                  onPressed: () {
+                    Navigator.pushNamed(context, LoginScreen.id);
+                  },
+                ),
+                RoundedButton(
+                  title: 'Register',
+                  colour: Colors.blueAccent,
+                  onPressed: () {
+                    Navigator.pushNamed(context, RegistrationScreen.id);
+                  },
                 ),
               ],
-            ),
-            SizedBox(
-              height: 48.0,
-            ),
-            RoundedButton(
-              title: 'Log In',
-              colour: Colors.lightBlueAccent,
-              onPressed: () {
-                Navigator.pushNamed(context, LoginScreen.id);
-              },
-            ),
-            RoundedButton(
-              title: 'Register',
-              colour: Colors.blueAccent,
-              onPressed: () {
-                Navigator.pushNamed(context, RegistrationScreen.id);
-              },
             ),
           ],
         ),

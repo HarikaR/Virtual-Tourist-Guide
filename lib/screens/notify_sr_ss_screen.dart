@@ -24,41 +24,45 @@ class SrSsTime extends StatelessWidget {
           bottom: 30.0,
         ),
         child: Center(
-          child: Column(
+          child: ListView(
             children: <Widget>[
-              Container(
-                decoration: BoxDecoration(
-                    color: Colors.blueGrey,
-                    borderRadius: BorderRadius.all(Radius.circular(20.0))
-                ),
-
-                child: Text(
-                  'Any sunset or sunrise points?☀️',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontFamily: 'AmaticSC',
-                    fontSize: 50.0,
-                    fontWeight: FontWeight.w900,
+              Column(
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                        color: Colors.blueGrey,
+                        borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                    child: Text(
+                      'Any sunset or sunrise points?☀️',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'AmaticSC',
+                        fontSize: 50.0,
+                        fontWeight: FontWeight.w900,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
                   ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              SizedBox(height: 30.0,),
-              Image.asset(
-                'images/sunrise.jpg',
-                alignment: Alignment.center,
-              ),
-              SizedBox(
-                height: 30.0,
-              ),
-              Text(
-                textFunction(),
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.lightBlueAccent,
-                  fontSize: 40.0,
-                  fontFamily: 'Inconsolata',
-                ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  Image.asset(
+                    'images/sunrise.jpg',
+                    alignment: Alignment.center,
+                  ),
+                  SizedBox(
+                    height: 30.0,
+                  ),
+                  Text(
+                    textFunction(),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.lightBlueAccent,
+                      fontSize: 40.0,
+                      fontFamily: 'Inconsolata',
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

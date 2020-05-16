@@ -9,7 +9,6 @@ import 'package:vtg1flutter/screens/notify_sr_ss_screen.dart';
 import 'package:vtg1flutter/screens/weather_screen.dart';
 import 'package:vtg1flutter/services/weather.dart';
 
-
 const apiKey = 'd413160d418036107043c25088ff10cc';
 
 class WelcomeToMapScreen extends StatefulWidget {
