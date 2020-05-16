@@ -28,104 +28,100 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         inAsyncCall: showSpinner,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.0),
-          child: ListView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Flexible(
-                    child: Hero(
-                      tag: 'logo',
-                      child: Container(
-                        height: 200.0,
-                        child: Image.asset('images/logo.png'),
-                      ),
-                    ),
+              Flexible(
+                child: Hero(
+                  tag: 'logo',
+                  child: Container(
+                    height: 200.0,
+                    child: Image.asset('images/logo.png'),
                   ),
-                  SizedBox(
-                    height: 48.0,
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    onChanged: (value) {
-                      if (value != null) {
-                        email = value;
-                      } else {
-                        print('Enter a value for email.');
-                      }
-                    },
-                    decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your email',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 8.0,
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    onChanged: (value) {
-                      if (value != null) password = value;
-                    },
-                    decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your password',
-                    ),
-                  ),
-                  SizedBox(
-                    height: 24.0,
-                  ),
-                  RoundedButton(
-                    title: 'Register',
-                    colour: Colors.blueAccent,
-                    onPressed: () async {
-                      setState(() {
-                        showSpinner = true;
-                      });
-                      try {
-                        final newUser = await _auth.createUserWithEmailAndPassword(
-                          email: email.trim(),
-                          password: password,
-                        );
-                        if (newUser != null) {
-                          Navigator.pushNamed(context, WelcomeScreen.id);
-                        }
-                        setState(() {
-                          showSpinner = false;
-                        });
-                      } catch (e) {
-                        Alert(
-                          context: context,
-                          type: AlertType.error,
-                          title: "Registration Error!",
-                          desc: "Login if already registered.",
-                          buttons: [
-                            DialogButton(
-                              child: Text(
-                                "COOL",
-                                style: TextStyle(color: Colors.white, fontSize: 20),
-                              ),
-                              onPressed: () =>
-                                  Navigator.pushNamed(context, WelcomeScreen.id),
-                              width: 120,
-                            )
-                          ],
-                        ).show();
-                        print(e);
-                      }
-                    },
-                  )
-                ],
+                ),
               ),
+              SizedBox(
+                height: 48.0,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+                onChanged: (value) {
+                  if (value != null) {
+                    email = value;
+                  } else {
+                    print('Enter a value for email.');
+                  }
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                  hintText: 'Enter your email',
+                ),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              TextFormField(
+                obscureText: true,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+                onChanged: (value) {
+                  if (value != null) password = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                  hintText: 'Enter your password',
+                ),
+              ),
+              SizedBox(
+                height: 24.0,
+              ),
+              RoundedButton(
+                title: 'Register',
+                colour: Colors.blueAccent,
+                onPressed: () async {
+                  setState(() {
+                    showSpinner = true;
+                  });
+                  try {
+                    final newUser = await _auth.createUserWithEmailAndPassword(
+                      email: email.trim(),
+                      password: password,
+                    );
+                    if (newUser != null) {
+                      Navigator.pushNamed(context, WelcomeScreen.id);
+                    }
+                    setState(() {
+                      showSpinner = false;
+                    });
+                  } catch (e) {
+                    Alert(
+                      context: context,
+                      type: AlertType.error,
+                      title: "Registration Error!",
+                      desc: "Login if already registered.",
+                      buttons: [
+                        DialogButton(
+                          child: Text(
+                            "COOL",
+                            style: TextStyle(color: Colors.white, fontSize: 20),
+                          ),
+                          onPressed: () =>
+                              Navigator.pushNamed(context, WelcomeScreen.id),
+                          width: 120,
+                        )
+                      ],
+                    ).show();
+                    print(e);
+                  }
+                },
+              )
             ],
           ),
         ),
