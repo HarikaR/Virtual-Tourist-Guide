@@ -47,59 +47,55 @@ class _WeatherScreenState extends State<WeatherScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: ListView(
-        children: <Widget>[
-          Container(
-            constraints: BoxConstraints.expand(),
-            child: SafeArea(
-              child: Column(
+      body: Container(
+        constraints: BoxConstraints.expand(),
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      FlatButton(
-                        onPressed: () async {
-                          var weatherData = await weather.getLocationWeather();
-                          updateUI(weatherData);
-                        },
-                        child: Icon(
-                          Icons.near_me,
-                          size: 50.0,
-                          color: Colors.white70,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 15.0),
-                    child: Row(
-                      children: <Widget>[
-                        Text(
-                          '$temperature°',
-                          style: kTempTextStyle,
-                        ),
-                        Text(
-                          weatherIcon,
-                          style: kConditionTextStyle,
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(right: 15.0),
-                    child: Text(
-                      '$weatherMessage in $cityName',
-                      textAlign: TextAlign.right,
-                      style: kMessageTextStyle,
+                  FlatButton(
+                    onPressed: () async {
+                      var weatherData = await weather.getLocationWeather();
+                      updateUI(weatherData);
+                    },
+                    child: Icon(
+                      Icons.near_me,
+                      size: 50.0,
+                      color: Colors.white70,
                     ),
                   ),
                 ],
               ),
-            ),
+              Padding(
+                padding: EdgeInsets.only(left: 15.0),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      '$temperature°',
+                      style: kTempTextStyle,
+                    ),
+                    Text(
+                      weatherIcon,
+                      style: kConditionTextStyle,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(right: 15.0),
+                child: Text(
+                  '$weatherMessage in $cityName',
+                  textAlign: TextAlign.right,
+                  style: kMessageTextStyle,
+                ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
